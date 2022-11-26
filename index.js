@@ -36,6 +36,8 @@ const server = app.listen(PORT,()=>{
 const io= socket(server,{
 	cors:{
 		origin:"https://chat-siris-v2.vercel.app",
+		methods: ["GET","POST"],
+		allowedHeaders:["my-custom-header"],
 		credentials:true,
 	},
 });
