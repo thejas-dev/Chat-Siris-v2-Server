@@ -1,21 +1,20 @@
 const express = require('express')
-// const cors = require('cors');
+const cors = require('cors');
 const mongoose = require('mongoose');
 const socket = require('socket.io');
 const app = express();
-// require('dotenv').config();
+require('dotenv').config();
 const userRoutes = require("./routes/userRoutes")
 
 
 
 
-// app.use(cors());
+app.use(cors());
 app.use(express.json());
 
 app.use('/api/auth',userRoutes);
 
-mongoose.connect(process.env.MONGO_ID
-	,{
+mongoose.connect("mongodb+srv://thejashari:letmegoin@cluster0.m2aumyz.mongodb.net/?retryWrites=true&w=majority",{
 	useNewUrlParser:true,
 	useUnifiedTopology:true,
 }).then(()=>{
@@ -36,7 +35,7 @@ const server = app.listen(PORT,()=>{
 //
 const io= socket(server,{
 	cors:{
-		origin:"https://chat-siris-v2.vercel.app",
+		origin:"http://localhost:3000",
 		credentials:true,
 	},
 });
