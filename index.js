@@ -32,7 +32,7 @@ app.get('/',(req,res)=>{
 const server = app.listen(PORT,()=>{
 	console.log(`Server Started on ${PORT} `);
 });
-//
+
 const io= socket(server,{
 	cors:{
 		origin:"https://chat-siris-v2.vercel.app",
