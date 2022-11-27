@@ -31,7 +31,7 @@ app.get('/',(req,res)=>{
 
 const server = app.listen(PORT,()=>{
 	console.log(`Server Started on ${PORT} `);
-})s
+})
 
 const io= socket(server,{
 	cors:{
