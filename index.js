@@ -40,7 +40,7 @@ const io= socket(server,{
 		allowedHeaders:["my-custom-header"],
 		credentials:true,
 	},
-});
+})
 
 global.onlineUsers = new Map();
 
