@@ -30,9 +30,9 @@ module.exports.register = async(req,res,next)=>{
 
 module.exports.createChannel = async(req,res,next) => {
 	try{
-		const {name,admin,description,users,privacy} = req.body;
+		const {name,admin,adminId,description,users,privacy} = req.body;
 		const group = await Group.create({
-			name,admin,description,users,privacy
+			name,admin,adminId,description,users,privacy
 		})
 		// console.log(group)
 		return res.json({status:true,group})
@@ -69,7 +69,7 @@ module.exports.sendMessage = async(req,res,next) => {
 module.exports.getMessages = async(req,res,next) => {
 	try{
 		const {group} = req.body;
-		// console.log(group)
+		console.log(group)
 		const data = await Message.find({ group:{ $all:group } }).sort({updatedAt:1})
 
 		return res.json({status:true,data})
@@ -189,5 +189,15 @@ module.exports.findChannelRoute = async(req,res,next) => {
 		return res.json({status:true,data})
 	}catch(ex){
 		next(ex)
+	}
+}
+
+module.exports.deleteMessage = async(req,res,next) => {
+	try{
+		const {id} = req.body;
+		const data = await Message.deleteOne({_id:id});
+		return res.json({status:true,data});
+	}catch(ex){
+		next(ex);
 	}
 }

@@ -70,6 +70,10 @@ io.on("connection",(socket)=>{
 		console.log(data.data.message.text)
 		io.to(group).emit('msg-recieve',data);
 	})
+	socket.on('refetchMessages',({group})=>{
+		console.log(group);
+		io.to(group).emit('fetchMessages',group);
+	})
 })
 
 

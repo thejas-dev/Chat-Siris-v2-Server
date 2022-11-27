@@ -1,7 +1,7 @@
 const {login,register,createChannel,
 	getAllChannels,sendMessage,getMessages,addUserToChannel,
 	addChannelToUser,fetchUserRoom,updateUser,backgroundImage,
-	updateName,updateAvatar,findChannelRoute} = require('../controllers/userControllers')
+	updateName,updateAvatar,findChannelRoute,deleteMessage} = require('../controllers/userControllers')
 
 const router = require('express').Router();
 
@@ -23,7 +23,8 @@ router.post('/fetchUserRoom',fetchUserRoom);
 router.post('/deleteBackground/:id',backgroundImage);
 router.post('/updateName/:id',updateName);
 router.post('/updateAvatar/:id',updateAvatar);
-router.post('/findChannelRoute',findChannelRoute)
+router.post('/findChannelRoute',findChannelRoute);
+router.post('/deleteMessage',deleteMessage);
 // router.post('/changeName/:id',changeName);
 // router.post('/setavatar/:id',setAvatar)
 // router.get("/allUsers/:id/:recentChats",getAllUsers);
