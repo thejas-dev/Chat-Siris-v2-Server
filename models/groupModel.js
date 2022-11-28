@@ -19,6 +19,7 @@ const groupSchema = new mongoose.Schema({
 	},
 	privacy:Boolean,
 	users:Array,	
+	adminOnly:Boolean,
 	},
 	{
 		timestamps:true,

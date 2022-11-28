@@ -74,6 +74,10 @@ io.on("connection",(socket)=>{
 		console.log(group);
 		io.to(group).emit('fetchMessages',group);
 	})
+	socket.on('channelUpdate',(data)=>{
+		console.log(data.name);
+		io.to(data.name).emit('channelDetailsUpdate',data);	
+	})
 })
 
 

@@ -30,9 +30,9 @@ module.exports.register = async(req,res,next)=>{
 
 module.exports.createChannel = async(req,res,next) => {
 	try{
-		const {name,admin,adminId,description,users,privacy} = req.body;
+		const {name,admin,adminId,description,adminOnly,users,privacy} = req.body;
 		const group = await Group.create({
-			name,admin,adminId,description,users,privacy
+			name,admin,adminId,description,adminOnly,users,privacy
 		})
 		// console.log(group)
 		return res.json({status:true,group})
@@ -197,6 +197,20 @@ module.exports.deleteMessage = async(req,res,next) => {
 		const {id} = req.body;
 		const data = await Message.deleteOne({_id:id});
 		return res.json({status:true,data});
+	}catch(ex){
+		next(ex);
+	}
+}
+
+module.exports.channelAdminUpdate = async(req,res,next) => {
+	try{
+		const {adminOnly} = req.body;
+		const userId = req.params.id;
+		const data = Group.findByIdAndUpdate(userId,{
+			adminOnly
+		},{new:true},(err,obj)=>{
+			return res.json({status:true,obj})
+		})
 	}catch(ex){
 		next(ex);
 	}

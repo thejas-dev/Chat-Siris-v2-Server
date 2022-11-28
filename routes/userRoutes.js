@@ -1,4 +1,4 @@
-const {login,register,createChannel,
+const {login,register,createChannel,channelAdminUpdate,
 	getAllChannels,sendMessage,getMessages,addUserToChannel,
 	addChannelToUser,fetchUserRoom,updateUser,backgroundImage,
 	updateName,updateAvatar,findChannelRoute,deleteMessage} = require('../controllers/userControllers')
@@ -25,6 +25,7 @@ router.post('/updateName/:id',updateName);
 router.post('/updateAvatar/:id',updateAvatar);
 router.post('/findChannelRoute',findChannelRoute);
 router.post('/deleteMessage',deleteMessage);
+router.post('/channelAdminUpdate/:id',channelAdminUpdate);
 // router.post('/changeName/:id',changeName);
 // router.post('/setavatar/:id',setAvatar)
 // router.get("/allUsers/:id/:recentChats",getAllUsers);
