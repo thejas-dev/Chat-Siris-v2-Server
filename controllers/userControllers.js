@@ -18,7 +18,7 @@ module.exports.login = async(req,res,next)=>{
 module.exports.register = async(req,res,next)=>{
 	try{
 		const {username,email,avatarImage,isAvatarImageSet} = req.body;
-		const user = User.create({
+		const user = await User.create({
 			email,username,avatarImage,isAvatarImageSet
 		})
 		// console.log(user)
