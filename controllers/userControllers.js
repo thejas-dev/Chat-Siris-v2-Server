@@ -30,9 +30,9 @@ module.exports.register = async(req,res,next)=>{
 
 module.exports.createChannel = async(req,res,next) => {
 	try{
-		const {name,admin,adminId,description,adminOnly,users,privacy} = req.body;
+		const {name,admin,adminId,description,password,adminOnly,users,privacy} = req.body;
 		const group = await Group.create({
-			name,admin,adminId,description,adminOnly,users,privacy
+			name,admin,adminId,description,password,adminOnly,users,privacy
 		})
 		// console.log(group)
 		return res.json({status:true,group})
