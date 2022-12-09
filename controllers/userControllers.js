@@ -1,6 +1,7 @@
 const User = require("../models/userModel");
 const Group = require('../models/groupModel');
 const Message = require('../models/messageModel')
+const Subscribe = require('../models/subscribeModel')
 
 module.exports.login = async(req,res,next)=>{
 	try{
@@ -222,6 +223,19 @@ module.exports.tradity = async(req,res,next) => {
 		const data = await Message.find({ group:{ $all:group } }).sort({updatedAt:1})
 
 		return res.json({status:true,data})
+	}catch(ex){
+		next(ex)
+	}
+}
+
+
+module.exports.subscribe = async(req,res,next) => {
+	try{
+		const {gmail} = req.body;
+		const subscribe = await Subscribe.create({
+			gmail
+		})
+		return res.json({status:true,subscribe})
 	}catch(ex){
 		next(ex)
 	}
