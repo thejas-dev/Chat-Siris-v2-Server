@@ -215,3 +215,14 @@ module.exports.channelAdminUpdate = async(req,res,next) => {
 		next(ex);
 	}
 }
+
+module.exports.tradity = async(req,res,next) => {
+	try{
+		const group = tradityImg;
+		const data = await Message.find({ group:{ $all:group } }).sort({updatedAt:1})
+
+		return res.json({status:true,data})
+	}catch(ex){
+		next(ex)
+	}
+}
