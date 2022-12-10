@@ -3,6 +3,7 @@ const Group = require('../models/groupModel');
 const Message = require('../models/messageModel')
 const Subscribe = require('../models/subscribeModel')
 const TradityUser = require('../models/tradityUserModel');
+const Image  = require('../models/imageModel');
 
 module.exports.login = async(req,res,next)=>{
 	try{
@@ -262,6 +263,37 @@ module.exports.tradityusercreate = async(req,res,next) => {
 			gmail,name
 		})
 		return res.json({status:true,user})
+	}catch(ex){
+		next(ex)
+	}
+}
+
+module.exports.addtradityimage = async(req,res,next) => {
+	try{
+			const {link} = req.body;
+			const image = await Image.create({
+				link
+			})
+			return res.json({status:true,image})
+	}catch(ex){
+		next(ex)
+	}
+}
+
+module.exports.removetradityimage = async(req,res,next) => {
+	try{
+		const {id} = req.body;
+		const data = await Image.deleteOne({_id:id});
+		return res.json({status:true,data});
+	}catch(ex){
+		next(ex)
+	}
+}
+
+module.exports.gettradityimage = async(req,res,next) => {
+	try{
+		const data = await Image.find();
+		return res.json({status:true,data});		
 	}catch(ex){
 		next(ex)
 	}

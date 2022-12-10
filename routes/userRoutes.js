@@ -1,6 +1,6 @@
-const {login,register,createChannel,channelAdminUpdate,tradity,subscribe,
-	getAllChannels,sendMessage,getMessages,addUserToChannel,tradityusercheck,
-	addChannelToUser,fetchUserRoom,updateUser,backgroundImage,
+const {login,register,createChannel,channelAdminUpdate,tradity,subscribe,tradityusercreate,
+	getAllChannels,sendMessage,getMessages,addUserToChannel,tradityusercheck,addtradityimage,removetradityimage,
+	addChannelToUser,fetchUserRoom,updateUser,backgroundImage,gettradityimage,
 	updateName,updateAvatar,findChannelRoute,deleteMessage} = require('../controllers/userControllers')
 
 const router = require('express').Router();
@@ -30,6 +30,9 @@ router.get('/tradity',tradity)
 router.post('/subscribe',subscribe)
 router.post('/tradityusercheck',tradityusercheck);
 router.post('/tradityusercreate',tradityusercreate);
+router.post('/addtradityimage',addtradityimage);
+router.post('/removetradityimage',removetradityimage);
+router.get('/gettradityimage',gettradityimage);
 // router.post('/changeName/:id',changeName);
 // router.post('/setavatar/:id',setAvatar)
 // router.get("/allUsers/:id/:recentChats",getAllUsers);
