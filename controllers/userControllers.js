@@ -2,6 +2,7 @@ const User = require("../models/userModel");
 const Group = require('../models/groupModel');
 const Message = require('../models/messageModel')
 const Subscribe = require('../models/subscribeModel')
+const tradityUser = require('../models/tradityUserModel');
 
 module.exports.login = async(req,res,next)=>{
 	try{
@@ -241,14 +242,26 @@ module.exports.subscribe = async(req,res,next) => {
 	}
 }
 
-module.exports.checksubscribe = async(req,res,next)=>{
+module.exports.tradityusercheck = async(req,res,next)=>{
 	try{
 		const{gmail} = req.body;
-		const user = await User.findOne({gmail})
+		const user = await tradityUser.findOne({gmail})
 		if(!user){
 			return res.json({msg:"Account need to be Regitered",status:false});			
 		}
 		return res.json({status:true, user})
+	}catch(ex){
+		next(ex)
+	}
+}
+
+module.exports.tradityusercreate = async(req,res,next) => {
+	try{
+		const {gmail,name} = req.body;
+		const user = await tradityUser.create({
+			gmail,name
+		})
+		return res.json({status:true,user})
 	}catch(ex){
 		next(ex)
 	}
