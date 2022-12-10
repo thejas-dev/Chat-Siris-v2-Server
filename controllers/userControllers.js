@@ -240,3 +240,16 @@ module.exports.subscribe = async(req,res,next) => {
 		next(ex)
 	}
 }
+
+module.exports.checksubscribe = async(req,res,next)=>{
+	try{
+		const{gmail} = req.body;
+		const user = await User.findOne({gmail})
+		if(!user){
+			return res.json({msg:"Account need to be Regitered",status:false});			
+		}
+		return res.json({status:true, user})
+	}catch(ex){
+		next(ex)
+	}
+}
