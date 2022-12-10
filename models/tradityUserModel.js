@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const tradityUserModel = new mongoose.Schema({
+const TradityUserSchema = new mongoose.Schema({
 	gmail:{
 		type: String,
 		required:true
@@ -14,4 +14,4 @@ const tradityUserModel = new mongoose.Schema({
 	}
 );
 
-module.exports = mongoose.model("tradityUser",tradityUserModel)
+module.exports = mongoose.model("TradityUser",TradityUserSchema)
