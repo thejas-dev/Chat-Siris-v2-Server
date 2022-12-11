@@ -6,12 +6,10 @@ const ImageSchema = new mongoose.Schema({
 		required:true
 	},
 	title:{
-		type:String,
-		required:true
+		type:String
 	},
 	description:{
-		type:String,
-		required:true
+		type:String
 	}},
 	{
 		timestamps:true,
