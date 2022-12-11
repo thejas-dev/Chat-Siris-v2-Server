@@ -270,9 +270,9 @@ module.exports.tradityusercreate = async(req,res,next) => {
 
 module.exports.addtradityimage = async(req,res,next) => {
 	try{
-			const {link} = req.body;
+			const {link,title,description} = req.body;
 			const image = await Image.create({
-				link
+				link,description,title
 			})
 			return res.json({status:true,image})
 	}catch(ex){
